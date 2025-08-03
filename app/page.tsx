@@ -5,14 +5,14 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <section className="flex flex-col items-center justify-center gap-10">
         <div className="flex flex-col items-center gap-6">
-          <p className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <h1 className="text-7xl text-center font-bold text-gray-700">
               Gradual
             </h1>
             <h3 className="text-center text-zinc-500">
               Track your academic growth!
             </h3>
-          </p>
+          </div>
           <form className="flex justify-center" action="">
             <button className="bg-blue-500 text-white py-3 px-8 rounded-xl flex items-center cursor-pointer shadow-xs hover:bg-blue-600 transition-colors">
               <FaGoogle className="mr-2" />
