@@ -8,10 +8,18 @@ import {
 } from "@/components/ui/sheet";
 import SideLinks from "./SideLinks";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function SideBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
   return (
-    <Sheet>
+    <Sheet onOpenChange={setIsOpen} open={isOpen}>
       <SheetTrigger>
         <GiHamburgerMenu className="text-2xl cursor-pointer" />
       </SheetTrigger>
