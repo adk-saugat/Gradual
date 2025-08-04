@@ -1,9 +1,5 @@
 import NavBar from "../NavBar";
 
 export default function Dashboard() {
-  return (
-    <div>
-      <NavBar />
-    </div>
-  );
+  return <div>Dashboard</div>;
 }
