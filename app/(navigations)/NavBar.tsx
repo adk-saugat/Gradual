@@ -12,7 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+import { CgProfile } from "react-icons/cg";
+import { FaSignOutAlt } from "react-icons/fa";
 export default function NavBar() {
   const pathname = usePathname();
   let activePage: String = pathname.slice(1);
@@ -34,15 +35,15 @@ export default function NavBar() {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="mr-2 text-lg text-gray-600">
-          <DropdownMenuLabel className="text-lg font-semibold">
-            Sau Gat
-          </DropdownMenuLabel>
+        <DropdownMenuContent className="mr-2 text-lg text-gray-600 font-semibold flex gap-1 flex-col">
+          <DropdownMenuLabel className="text-xl">Sau Gat</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem className="font-medium cursor-pointer">
+          <DropdownMenuItem className="cursor-pointer font-semibold">
+            <CgProfile className="inline mr-2 scale-130" />
             Profile
           </DropdownMenuItem>
-          <DropdownMenuItem className="font-medium cursor-pointer">
+          <DropdownMenuItem className="cursor-pointer font-semibold">
+            <FaSignOutAlt className="inline mr-2 scale-130" />
             Log out
           </DropdownMenuItem>
         </DropdownMenuContent>
