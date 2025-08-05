@@ -15,11 +15,16 @@ const authOptions = {
       },
     }),
   ],
+  pages: {
+    signIn: "/",
+  },
   callbacks: {
     async signIn({ profile }) {
       return true;
     },
-    async session({ session }) {},
+    async session({ session }) {
+      return session;
+    },
   },
 };
 
