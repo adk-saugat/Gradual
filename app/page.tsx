@@ -1,3 +1,5 @@
+"use client";
+import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 
 export default function Home() {
@@ -14,7 +16,13 @@ export default function Home() {
             </h3>
           </div>
           <form className="flex justify-center" action="">
-            <button className="bg-blue-500 text-white py-3 px-8 rounded-xl flex items-center cursor-pointer shadow-xs hover:bg-blue-600 transition-colors">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                signIn("google");
+              }}
+              className="bg-blue-500 text-white py-3 px-8 rounded-xl flex items-center cursor-pointer shadow-xs hover:bg-blue-600 transition-colors"
+            >
               <FaGoogle className="mr-2" />
               <span>Login With Google</span>
             </button>
