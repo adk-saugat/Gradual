@@ -1,5 +1,3 @@
-"use server";
-
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import connectDB from "@/config/database";
@@ -26,17 +24,22 @@ const authOptions = {
   callbacks: {
     async signIn({ profile }) {
       connectDB();
+      const userExists = await User.findOne({ email: profile.email });
 
-      await User.create({
-        username: profile.name,
-        givenName: profile.given_name,
-        email: profile.email,
-        image: profile.picture,
-      });
-
+      if (!userExists) {
+        await User.create({
+          username: profile.name,
+          givenName: profile.given_name,
+          email: profile.email,
+          image: profile.picture,
+        });
+      }
       return true;
     },
     async session({ session }) {
+      const user = await User.findOne({ email: session.user.email });
+
+      session.user.id = user._id.toString();
       return session;
     },
     async redirect({ baseUrl }) {
