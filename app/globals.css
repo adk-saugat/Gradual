@@ -6,7 +6,8 @@
 body {
   @apply w-[430px] border min-h-screen;
 }
-input {
+input,
+textarea {
   @apply w-full h-14 px-4 border rounded-md;
 }
 

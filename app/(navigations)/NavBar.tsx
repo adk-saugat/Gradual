@@ -22,9 +22,9 @@ export default function NavBar() {
   const user = session?.user;
 
   const pathname = usePathname();
-  let activePage: string = pathname.slice(1);
+  let activePage: string = pathname.slice(1).split("/")[0];
   useEffect(() => {
-    activePage = pathname.slice(1);
+    activePage = pathname.slice(1).split("/")[0];
   }, [pathname]);
 
   const router = useRouter();
