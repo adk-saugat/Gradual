@@ -27,6 +27,11 @@ const assignmentSchema = new Schema({
     type: String,
     required: [true, "Assignment Status is required!"],
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Assignment = models.Assignment || model("Assignment", assignmentSchema);

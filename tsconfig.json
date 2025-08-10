@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "middleware.ts"
+    "middleware.ts",
+    "utils/authOptions.js",
+    "app/(navigations)/assignments/AssignmentCard.jsx"
   ],
   "exclude": ["node_modules"]
 }

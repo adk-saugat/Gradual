@@ -1,5 +1,5 @@
 import StatusButton from "./StatusButton";
-import { createUser } from "@/lib/actions";
+import { createAssignment } from "@/lib/actions";
 
 export default function AddAssignment() {
   return (
@@ -7,7 +7,7 @@ export default function AddAssignment() {
       <div className="text-3xl font-medium text-gray-600 border-b-2 pb-2">
         Add Assignment
       </div>
-      <form className="flex flex-col gap-4" action={createUser}>
+      <form className="flex flex-col gap-4" action={createAssignment}>
         <input
           type="text"
           name="title"
