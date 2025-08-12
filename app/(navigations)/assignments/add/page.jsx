@@ -1,5 +1,4 @@
-import StatusButton from "./StatusButton";
-import { createAssignment } from "@/lib/actions";
+import createAssignment from "@/actions/createAssignments";
 
 export default function AddAssignment() {
   return (
@@ -13,22 +12,21 @@ export default function AddAssignment() {
           name="title"
           required
           placeholder="Enter title"
-          className="text-xl"
+          className="text-xl bg-white"
         />
         <input
           type="text"
           name="description"
           required
           placeholder="Enter description"
-          className="text-xl"
+          className="text-xl bg-white"
         />
         <input
           type="date"
           name="dueDate"
           required
-          className="text-lg text-gray-500"
+          className="text-lg bg-white text-gray-500"
         />
-        <StatusButton />
         <button
           type="submit"
           className="bg-blue-500 p-4 rounded-md text-xl font-medium text-white hover:bg-blue-400 cursor-pointer"

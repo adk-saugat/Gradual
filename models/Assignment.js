@@ -23,8 +23,9 @@ const assignmentSchema = new Schema({
       required: [true, "Date is required!"],
     },
   },
-  status: {
-    type: String,
+  completed: {
+    type: Boolean,
+    default: false,
     required: [true, "Assignment Status is required!"],
   },
   owner: {

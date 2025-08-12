@@ -6,7 +6,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getSessionUser } from "@/utils/getSessionUser";
 
-export async function createAssignment(formData: FormData): Promise<void> {
+export default async function createAssignment(
+  formData: FormData
+): Promise<void> {
   connectDB();
   const sessionUser = await getSessionUser();
 
@@ -19,10 +21,9 @@ export async function createAssignment(formData: FormData): Promise<void> {
   const title = formData.get("title");
   const description = formData.get("description");
   const dates = formData.get("dueDate")?.toString();
-  const status = formData.get("status");
 
   // Type guard to ensure all required fields exist
-  if (!title || !description || !dates || !status) {
+  if (!title || !description || !dates) {
     throw new Error("All fields are required");
   }
   const dateArray = dates.split("-");
@@ -56,7 +57,6 @@ export async function createAssignment(formData: FormData): Promise<void> {
       month: monthName,
       date: parseInt(date),
     },
-    status,
     owner: userId,
   };
 
