@@ -1,8 +1,20 @@
+"use client";
+
 import { MdOutlineDateRange } from "react-icons/md";
 import CheckBox from "./CheckBox";
+import { MdDelete } from "react-icons/md";
+import deleteAssignment from "@/actions/deleteAssignment";
 
 export default function AssignmentCard({ assignment }) {
-  const { title, description, completed, dueDate, id } = assignment;
+  const { title, description, completed, dueDate, _id } = assignment;
+
+  const handledeleteAssignment = async (id) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this assignment?"
+    );
+    if (!confirm) return;
+    await deleteAssignment(id);
+  };
 
   return (
     <div className="bg-white rounded-md p-4 flex flex-col gap-1 shadow-sm">
@@ -27,7 +39,14 @@ export default function AssignmentCard({ assignment }) {
             Due: {dueDate?.month} {dueDate?.date}
           </span>
         </p>
-        <CheckBox completed={completed} id={id} />
+        <div className="flex gap-2">
+          <MdDelete
+            size={25}
+            className="text-red-500 cursor-pointer hover:scale-105"
+            onClick={() => handledeleteAssignment(_id)}
+          />
+          <CheckBox completed={completed} id={_id} />
+        </div>
       </div>
     </div>
   );
