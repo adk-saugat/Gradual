@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en" className="flex justify-center">
-        <body>{children}</body>
+        <body className="bg-gray-50 h-full border">{children}</body>
       </html>
     </AuthProvider>
   );

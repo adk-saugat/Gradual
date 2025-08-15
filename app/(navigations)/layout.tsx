@@ -6,9 +6,9 @@ export default function NavLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="h-screen">
       <NavBar />
       <main className="p-4 bg-gray-50">{children}</main>
-    </>
+    </div>
   );
 }

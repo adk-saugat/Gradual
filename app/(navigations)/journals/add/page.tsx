@@ -1,10 +1,12 @@
+import createJournal from "@/actions/createJournal";
+
 export default function AddJournal() {
   return (
-    <div className="pt-4 flex flex-col gap-6">
+    <div className="mt-4 flex flex-col gap-6">
       <div className="text-3xl font-semibold text-gray-600 border-b-2 pb-2">
         Add Journal
       </div>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" action={createJournal}>
         <input
           type="text"
           name="title"

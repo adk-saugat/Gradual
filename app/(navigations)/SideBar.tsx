@@ -11,11 +11,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 import { useEffect, useState } from "react";
-import { redirect, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function SideBar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setIsOpen(false);
@@ -27,7 +28,7 @@ export default function SideBar() {
           size={25}
           className="cursor-pointer scale-120"
           onClick={() =>
-            redirect(
+            router.push(
               pathname.includes("/assignments") ? "/assignments" : "/journals"
             )
           }
