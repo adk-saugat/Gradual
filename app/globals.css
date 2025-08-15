@@ -7,8 +7,7 @@ body {
   @apply w-[430px] border min-h-screen;
 }
 input[type="text"],
-input[type="date"],
-textarea {
+input[type="date"] {
   @apply w-full h-14 px-4 border rounded-md;
 }
 

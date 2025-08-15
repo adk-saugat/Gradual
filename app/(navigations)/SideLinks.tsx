@@ -22,10 +22,13 @@ export default function SideLinks() {
         <MdAssignment className="text-lg" />
         <span className="text-lg font-medium">Assignments</span>
       </Link>
-      <li className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded">
+      <Link
+        href="/journals"
+        className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded"
+      >
         <IoIosJournal className="text-lg" />
         <span className="text-lg font-medium">Journals</span>
-      </li>
+      </Link>
       <li className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded">
         <FaProjectDiagram className="text-lg" />
         <span className="text-lg font-medium">Projects</span>

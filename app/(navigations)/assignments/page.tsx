@@ -1,8 +1,8 @@
 import connectDB from "@/config/database";
-import AddAssignmentBtn from "./AddAssignmentBtn";
 import AssignmentCard from "./AssignmentCard";
 import { getSessionUser } from "@/utils/getSessionUser";
 import Assignment from "@/models/Assignment";
+import AddButton from "../AddButton";
 
 export default async function AssignmentPage() {
   connectDB();
@@ -28,7 +28,7 @@ export default async function AssignmentPage() {
         <input type="text" placeholder="Search Assignments..." />
       </form>
 
-      <AddAssignmentBtn />
+      <AddButton text="Add Assigments" urlLocation="/assignments/add" />
 
       {/* Example assignment card */}
       {plainAssignments &&

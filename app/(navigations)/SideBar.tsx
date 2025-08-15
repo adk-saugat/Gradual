@@ -22,11 +22,15 @@ export default function SideBar() {
   }, [pathname]);
   return (
     <>
-      {pathname == "/assignments/add" ? (
+      {pathname == "/assignments/add" || pathname == "/journals/add" ? (
         <IoMdArrowRoundBack
           size={25}
           className="cursor-pointer scale-120"
-          onClick={() => redirect("/assignments")}
+          onClick={() =>
+            redirect(
+              pathname.includes("/assignments") ? "/assignments" : "/journals"
+            )
+          }
         />
       ) : (
         <Sheet onOpenChange={setIsOpen} open={isOpen}>
