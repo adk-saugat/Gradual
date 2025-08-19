@@ -4,6 +4,19 @@ import JournalCard from "./JournalCard";
 import Journal from "@/models/Journal";
 import { getSessionUser } from "@/utils/getSessionUser";
 
+interface SerializedJournal {
+  _id: string;
+  title: string;
+  content: string;
+  dateInfo: {
+    day: number;
+    month: string;
+    year: number;
+  };
+  owner: string;
+  __v: number;
+}
+
 export default async function Journals() {
   connectDB();
 
@@ -16,7 +29,11 @@ export default async function Journals() {
 
   const journals = await Journal.find({ owner: userId });
 
-  // const plainAssignments = JSON.parse(JSON.stringify(assignments));
+  // Convert Mongoose documents to plain objects for client components
+  const plainJournals: SerializedJournal[] = JSON.parse(
+    JSON.stringify(journals)
+  );
+
   return (
     <div className="flex flex-col gap-4">
       <form action="">
@@ -24,10 +41,15 @@ export default async function Journals() {
       </form>
       <AddButton text="Add Journals" urlLocation="/journals/add" />
       <div>
-        {journals &&
-          journals.map((journalInfo) => (
-            <JournalCard journalInfo={journalInfo} key={journalInfo.id} />
-          ))}
+        {plainJournals && plainJournals.length > 0 ? (
+          plainJournals.map((journalInfo) => (
+            <JournalCard journalInfo={journalInfo} key={journalInfo._id} />
+          ))
+        ) : (
+          <div className="text-center mt-6 text-lg font-light text-gray-400">
+            No Journals added!
+          </div>
+        )}
       </div>
     </div>
   );

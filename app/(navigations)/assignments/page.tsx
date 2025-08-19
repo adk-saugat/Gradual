@@ -13,14 +13,11 @@ export default async function AssignmentPage() {
   if (!userId) {
     throw new Error("UserId is required!");
   }
-  console.log(userId);
 
   const assignments = await Assignment.find({ owner: userId });
-  console.log(assignments);
 
   // Convert Mongoose documents to plain objects for client components
   const plainAssignments = JSON.parse(JSON.stringify(assignments));
-  console.log("Plain assignments:", plainAssignments);
 
   return (
     <div className="flex flex-col gap-4">
@@ -31,10 +28,15 @@ export default async function AssignmentPage() {
       <AddButton text="Add Assigments" urlLocation="/assignments/add" />
 
       {/* Example assignment card */}
-      {plainAssignments &&
+      {Array.isArray(plainAssignments) && plainAssignments.length > 0 ? (
         plainAssignments.map((assignment: any) => (
           <AssignmentCard key={assignment._id} assignment={assignment} />
-        ))}
+        ))
+      ) : (
+        <div className="text-center mt-6 text-lg font-light text-gray-400">
+          No Assignments added!
+        </div>
+      )}
     </div>
   );
 }

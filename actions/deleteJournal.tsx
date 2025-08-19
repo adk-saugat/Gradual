@@ -1,11 +1,11 @@
 "use server";
 
 import connectDB from "@/config/database";
-import Assignment from "@/models/Assignment";
+import Journal from "@/models/Journal";
 import { revalidatePath } from "next/cache";
 import { getSessionUser } from "@/utils/getSessionUser";
 
-export default async function deleteAssignment(assignmentId: string) {
+export default async function deleteJournal(journalId: string) {
   connectDB();
   const sessionUser = await getSessionUser();
 
@@ -15,14 +15,14 @@ export default async function deleteAssignment(assignmentId: string) {
 
   const { userId } = sessionUser;
 
-  const assignment = await Assignment.findById(assignmentId);
+  const journal = await Journal.findById(journalId);
 
-  if (!assignment) throw new Error("Assignment not found!");
+  if (!journal) throw new Error("Assignment not found!");
 
-  if (assignment.owner.toString() !== userId) {
+  if (journal.owner.toString() !== userId) {
     throw new Error("Unauthorized!");
   }
 
-  await Assignment.deleteOne();
-  revalidatePath("/assignments");
+  await Journal.deleteOne();
+  revalidatePath("/journals");
 }
