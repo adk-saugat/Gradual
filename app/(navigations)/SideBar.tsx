@@ -21,17 +21,26 @@ export default function SideBar() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  const isAddPage =
+    pathname === "/assignments/add" ||
+    pathname === "/journals/add" ||
+    pathname === "/projects/add";
+
+  const getBackPath = () => {
+    if (pathname.includes("/assignments")) return "/assignments";
+    if (pathname.includes("/journals")) return "/journals";
+    if (pathname.includes("/projects")) return "/projects";
+    return "/dashboard";
+  };
+
   return (
     <>
-      {pathname == "/assignments/add" || pathname == "/journals/add" ? (
+      {isAddPage ? (
         <IoMdArrowRoundBack
           size={25}
           className="cursor-pointer scale-120"
-          onClick={() =>
-            router.push(
-              pathname.includes("/assignments") ? "/assignments" : "/journals"
-            )
-          }
+          onClick={() => router.push(getBackPath())}
         />
       ) : (
         <Sheet onOpenChange={setIsOpen} open={isOpen}>

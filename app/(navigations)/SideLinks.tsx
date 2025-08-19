@@ -2,7 +2,6 @@ import { GoHomeFill } from "react-icons/go";
 import { MdAssignment } from "react-icons/md";
 import { IoIosJournal } from "react-icons/io";
 import { FaProjectDiagram } from "react-icons/fa";
-import { IoIosSettings } from "react-icons/io";
 import Link from "next/link";
 
 export default function SideLinks() {
@@ -29,14 +28,13 @@ export default function SideLinks() {
         <IoIosJournal className="text-lg" />
         <span className="text-lg font-medium">Journals</span>
       </Link>
-      <li className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded">
+      <Link
+        href="/projects"
+        className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded"
+      >
         <FaProjectDiagram className="text-lg" />
         <span className="text-lg font-medium">Projects</span>
-      </li>
-      <li className="flex items-center space-x-2 cursor-pointer hover:bg-gray-200 p-3 rounded">
-        <IoIosSettings className="text-lg" />
-        <span className="text-lg font-medium">Settings</span>
-      </li>
+      </Link>
     </ul>
   );
 }

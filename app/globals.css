@@ -11,6 +11,21 @@ input[type="date"] {
   @apply w-full h-14 px-4 border rounded-md;
 }
 
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
 
